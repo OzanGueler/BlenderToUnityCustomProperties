@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BTUAssetPostProcessor : AssetPostprocessor {
     private void OnPostprocessGameObjectWithUserProperties(GameObject gameObject, string[] propNames, object[] values) {
-        BTU newFroggy = gameObject.AddComponent<BTU>();
-        newFroggy.SetProperties(propNames, values);
+        BTU newBtu = gameObject.AddComponent<BTU>();
+        newBtu.SetProperties(propNames, values);
     }
 }
