@@ -4,12 +4,17 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[BTUProp("Prefab")]
 [Serializable]
 public class BTUPropPrefabOperator : BTUPropOperator {
     public GameObject prefab;
 
     public BTUPropPrefabOperator() {
-        fj_prop_name = "Prefab";
+        fj_button_description = "Replace Prefabs";
+    }
+
+    public override void Init() {
+        prefab = (GameObject) AssetDatabase.LoadAssetAtPath(BTUHelper.GetRelativePath(fj_prop_value.ToString()), typeof(GameObject));
     }
 
     public override void Execute(GameObject target) {
@@ -17,6 +22,6 @@ public class BTUPropPrefabOperator : BTUPropOperator {
         temp.transform.parent = target.transform.parent;
         temp.transform.position = target.transform.position;
         temp.transform.rotation = target.transform.rotation;
-        //MonoBehaviour.DestroyImmediate(target.gameObject);
+        MonoBehaviour.DestroyImmediate(target.gameObject);
     }
 }
